@@ -1,21 +1,15 @@
-const addArray = (vecA, vecB) => {
-  var arr = [];
-  var i = 0;
-  if (vecA.length && vecB.length && vecA.length === vecB.length) {
-    for (i; i < vecA.length; i++) {
-      arr.push(vecA[i] + vecB[i]);
-    }
+const add = (vecA, vecB, arr = [], i = 0) => {
+  if (!vecA.length && !vecB.length && vecA.length !== vecB.length) return false;
+  for (i; i < vecA.length; i++) {
+    arr = [...arr, vecA[i] + vecB[i]];
   }
   return arr;
 };
 
-const subArray = (vecA, vecB) => {
-  var arr = [];
-  var i = 0;
-  if (vecA.length && vecB.length && vecA.length === vecB.length) {
-    for (i; i < vecA.length; i++) {
-      arr.push(vecA[i] - vecB[i]);
-    }
+const subtract = (vecA, vecB, arr = [], i = 0) => {
+  if (!vecA.length && !vecB.length && vecA.length !== vecB.length) return false;
+  for (i; i < vecA.length; i++) {
+    arr = [...arr, vecA[i] - vecB[i]];
   }
   return arr;
 };
@@ -71,6 +65,8 @@ const theta = (a = [], b = []) => {
 };
 
 export {
+  add,
+  subtract,
   scalar,
   magnitude,
   normalisation,
