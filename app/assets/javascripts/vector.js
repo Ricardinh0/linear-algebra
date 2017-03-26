@@ -1,31 +1,32 @@
 const addArray = (vecA, vecB) => {
   var arr = [];
   var i = 0;
-  if ( vecA.length && vecB.length && vecA.length === vecB.length ) {
-    for ( i; i < vecA.length; i++ ) {
-      arr.push( vecA[i] + vecB[i] );
+  if (vecA.length && vecB.length && vecA.length === vecB.length) {
+    for (i; i < vecA.length; i++) {
+      arr.push(vecA[i] + vecB[i]);
     }
   }
   return arr;
-}
+};
 
 const subArray = (vecA, vecB) => {
   var arr = [];
   var i = 0;
-  if ( vecA.length && vecB.length && vecA.length === vecB.length ) {
-    for ( i; i < vecA.length; i++ ) {
-      arr.push( vecA[i] - vecB[i] );
+  if (vecA.length && vecB.length && vecA.length === vecB.length) {
+    for (i; i < vecA.length; i++) {
+      arr.push(vecA[i] - vecB[i]);
     }
   }
   return arr;
-}
+};
 
 const scalar = (n = 0, v = [], i = 0) => {
   if (!v.length) return false;
   v[i] = n * v[i];
   if (i !== v.length-1) {
     return scalar(n, v, i+1);
-  } else {
+  } 
+  else {
     return v;
   }
 };
@@ -39,7 +40,8 @@ const magnitude = (v = [], i = 0, n = 0) => {
   n += square(v[i]);
   if (i !== v.length-1) {
     return magnitude(v, i+1, n);
-  } else {
+  }
+  else {
     return Math.sqrt(n);
   }
 };
@@ -55,7 +57,8 @@ const dot = (a = [], b = [], i = 0, d = 0) => {
   d += a[i]*b[i];
   if (i !== a.length-1) {
     return dot(a, b, i+1, d);
-  } else {
+  }
+  else {
     return d;
   }
 };
@@ -63,7 +66,7 @@ const dot = (a = [], b = [], i = 0, d = 0) => {
 const theta = (a = [], b = []) => {
   if (!a.length || !b.length || a.length !== b.length) return false;
   //  Returns radians
-  let r = Math.acos(dot(a,b) / (magnitude(a) * magnitude(b)));
+  const r = Math.acos(dot(a,b) / (magnitude(a) * magnitude(b)));
   return isNaN(r) ? false : r;
 };
 
@@ -72,5 +75,6 @@ export {
   magnitude,
   normalisation,
   dot,
-  theta
+  theta,
+  square
 };
