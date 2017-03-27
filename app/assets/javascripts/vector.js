@@ -1,3 +1,22 @@
+const PI = 3.141592653589793;
+/**
+ * Converts radian to degree
+ *
+ * @param      {number}  radian  The radian
+ * @return     {number}  degree  The degree
+ */
+const radToDeg = (radian) => {
+  return radian * (180/PI);
+};
+/**
+ * { function_description }
+ *
+ * @param      {number}  degree  The degree
+ * @return     {number}  radian  The radian
+ */
+const degToRad = (degree) => {
+  return degree * (PI/180);
+};
 /**
  * Add vectors
  *
@@ -112,6 +131,8 @@ const theta = (vA = [], vB = []) => {
  * Export
  */
 export {
+  radToDeg,
+  degToRad,
   add,
   subtract,
   scalar,

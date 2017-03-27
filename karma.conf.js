@@ -1,4 +1,4 @@
-module.exports = function (config) {
+module.exports = function(config) {
   config.set({
     frameworks: ['mocha', 'chai', 'sinon'],
     files: [
@@ -9,7 +9,7 @@ module.exports = function (config) {
       'tests/unit/*_spec.js': ['webpack'],
       'tests/unit/**/*_spec.js': ['webpack']
     },
-    webpack: require("./webpack.config.js"),
+    webpack: require('./webpack.config.js'),
     webpackMiddleware: {
       noInfo: true,
       stats: {
