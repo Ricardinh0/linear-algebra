@@ -2,12 +2,12 @@ module.exports = function (config) {
   config.set({
     frameworks: ['mocha', 'chai', 'sinon'],
     files: [
-      'tests/*_spec.js',
-      'tests/**/*_spec.js'
+      'tests/unit/*_spec.js',
+      'tests/unit/**/*_spec.js'
     ],
     preprocessors: {
-      'tests/*_spec.js': ['webpack'],
-      'tests/**/*_spec.js': ['webpack']
+      'tests/unit/*_spec.js': ['webpack'],
+      'tests/unit/**/*_spec.js': ['webpack']
     },
     webpack: require("./webpack.config.js"),
     webpackMiddleware: {

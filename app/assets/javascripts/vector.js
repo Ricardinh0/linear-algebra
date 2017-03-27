@@ -1,19 +1,38 @@
-const add = (vecA, vecB, arr = [], i = 0) => {
-  if (!vecA.length && !vecB.length && vecA.length !== vecB.length) return false;
-  for (i; i < vecA.length; i++) {
-    arr = [...arr, vecA[i] + vecB[i]];
+/**
+ * Add vectors
+ *
+ * @param      {Array}            vA      Vector A
+ * @param      {Array}            vB      Vector B
+ * @return     {Array}            A vector that is the sum of vA and vB
+ */
+const add = (vA = [], vB = [], v = [], i = 0) => {
+  if (!vA.length && !vB.length && vA.length !== vB.length) return false;
+  for (i; i < vA.length; i++) {
+    v = [...v, vA[i] + vB[i]];
   }
-  return arr;
+  return v;
 };
-
-const subtract = (vecA, vecB, arr = [], i = 0) => {
-  if (!vecA.length && !vecB.length && vecA.length !== vecB.length) return false;
-  for (i; i < vecA.length; i++) {
-    arr = [...arr, vecA[i] - vecB[i]];
+/**
+ * Subtract vectors
+ *
+ * @param      {Array}            vA      Vector A
+ * @param      {Array}            vB      Vector B
+ * @return     {Array}                    A vector that is the subtracted sum of vA and vB
+ */
+const subtract = (vA, vB, v = [], i = 0) => {
+  if (!vA.length && !vB.length && vA.length !== vB.length) return false;
+  for (i; i < vA.length; i++) {
+    v = [...v, vA[i] - vB[i]];
   }
-  return arr;
+  return v;
 };
-
+/**
+ * Scale vector
+ *
+ * @param      {Number}            n       The number to scale a vector by
+ * @param      {Array}             v       The vector to be scaled
+ * @return     {Array}                     The scaled vector
+ */
 const scalar = (n = 0, v = [], i = 0) => {
   if (!v.length) return false;
   v[i] = n * v[i];
@@ -24,11 +43,21 @@ const scalar = (n = 0, v = [], i = 0) => {
     return v;
   }
 };
-
+/**
+ * Square a number
+ *
+ * @param      {Number}  n       The integer to be square
+ * @return     {Number}          The squared integer
+ */
 const square = (n) => {
   return n * n;
 };
-
+/**
+ * Get the magnitude of a vector
+ *
+ * @param      {Array}              v       The vector to measure
+ * @return     {Number}                     The magnitude
+ */
 const magnitude = (v = [], i = 0, n = 0) => {
   if (!v.length) return false;
   n += square(v[i]);
@@ -39,31 +68,49 @@ const magnitude = (v = [], i = 0, n = 0) => {
     return Math.sqrt(n);
   }
 };
-
+/**
+ * Normalise a vector
+ *
+ * @param      {Array}            v       The vector to be normalised
+ * @return     {Array}                    The normalised vector
+ */
 const normalisation = (v = []) => {
   if (!v.length) return false;
   v = scalar(1/magnitude(v), v);
   return v;
 };
-
-const dot = (a = [], b = [], i = 0, d = 0) => {
-  if (!a.length || !b.length || a.length !== b.length) return false;
-  d += a[i]*b[i];
-  if (i !== a.length-1) {
-    return dot(a, b, i+1, d);
+/**
+ * Get the dot product of tow vectors
+ *
+ * @param      {Array}             vA      Vector A
+ * @param      {Array}             vB      Vector B
+ * @return     {Number}                    The dot product
+ */
+const dot = (vA = [], vB = [], i = 0, d = 0) => {
+  if (!vA.length || !vB.length || vA.length !== vB.length) return false;
+  d += vA[i]*vB[i];
+  if (i !== vA.length-1) {
+    return dot(vA, vB, i+1, d);
   }
   else {
     return d;
   }
 };
-
-const theta = (a = [], b = []) => {
-  if (!a.length || !b.length || a.length !== b.length) return false;
-  //  Returns radians
-  const r = Math.acos(dot(a,b) / (magnitude(a) * magnitude(b)));
+/**
+ * Get the theta of to vectors
+ *
+ * @param      {Array}    vA       Vector A
+ * @param      {Array}    vB       Vector B
+ * @return     {Number}            Theta in radians, else, false if vA and vB are identical
+ */
+const theta = (vA = [], vB = []) => {
+  if (!vA.length || !vB.length || vA.length !== vB.length) return false;
+  const r = Math.acos(dot(vA,vB) / (magnitude(vA) * magnitude(vB)));
   return isNaN(r) ? false : r;
 };
-
+/**
+ * Export
+ */
 export {
   add,
   subtract,

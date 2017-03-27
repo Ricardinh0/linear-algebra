@@ -10,6 +10,15 @@ env:
 
 parser: "babel-eslint"
 
+globals:
+  describe: false
+  expect: false
+  it: false
+  before: false
+  beforeEach: false
+  after: false
+  afterEach: false
+
 rules:
   indent: [2, 2] # 2 spaces indentation
   quotes: [2, "single"]
